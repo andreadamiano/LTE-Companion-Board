@@ -1,0 +1,30 @@
+BILL OF MATERIALS:
+RK3566: SoC (microprocessor)
+Power Management IC: RK809-1
+K4F6E304HB-MGCH: Ram memory
+Quectel EG25-G (LGA Version): Modem
+SD card/emmc: Flash memory
+U.FL RF: Antenna socket
+MP9943AGQ-Z: Buck Voltage Regulator 
+24 MHz SMD Crystal
+32.768 kHz SMD Crysta
+MP2315GJ-Z: 5V Voltage Regulator 
+MP9943AGQ-Z: 3.8 Voltage Regulator
+TXB0102DCUR: Bi-Directional Logic Level Shifter
+Nano-SIM Card Slot
+MIPI-CSI Camera FPC Connector
+SD Card Slot
+
+
+PCB STACKUP:
+L1: Signal / Power / Decoupling
+L2: Solid GND plane
+L3: Signal
+L4: Power
+L5: Power
+L6: Signal
+L7: Solid GND plane
+L8: Signal / Power / Decoupling
+
+
+
