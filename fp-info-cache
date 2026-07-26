@@ -1,4 +1,4 @@
-27244800609371523
+27248367248250673
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -107911,3 +107911,17 @@ IC_RK3566
 0
 565
 565
+companion-computer
+RK809-5
+
+
+0
+69
+69
+companion-computer
+RK817
+
+
+0
+69
+69

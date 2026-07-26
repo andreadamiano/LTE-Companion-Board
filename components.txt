@@ -1,19 +1,22 @@
 BILL OF MATERIALS:
 RK3566: SoC (microprocessor)
-Power Management IC: RK809-1
+Power Management IC: RK809-5
 K4F6E304HB-MGCH: Ram memory
 Quectel EG25-G (LGA Version): Modem
-SD card/emmc: Flash memory
+emmc: Flash memory
 U.FL RF: Antenna socket
-MP9943AGQ-Z: Buck Voltage Regulator 
+MP9943AGQ-Z: Adjustable Buck Voltage Regulator (25V - 5V)
+MP9943AGQ-Z: Adjustable Buck Voltage Regulator (25V - 3.8V)
 24 MHz SMD Crystal
-32.768 kHz SMD Crysta
-MP2315GJ-Z: 5V Voltage Regulator 
-MP9943AGQ-Z: 3.8 Voltage Regulator
-TXB0102DCUR: Bi-Directional Logic Level Shifter
+TXU0202DCUR: 2 channel fixed-direction Logic Level Shifter (bridges the dual-voltage serial UART interface between the RK3566 Processor (1.8V logic) and the STM32 Flight Controller (3.3V logic))
 Nano-SIM Card Slot
 MIPI-CSI Camera FPC Connector
-SD Card Slot
+
+REFERENCE SCHEMATIC:
+https://dl.radxa.com/zero3/docs/hw/3w/radxa_zero_3w_v1110_schematic.pdf (Example)
+https://dl.xkwy2018.com/downloads/RK3568/RK356X/Hardware/Rockchip_RK3568_Hardware_Design_Guide_V1.2_EN.pdf (for PCB Design recommendations)
+https://dl.xkwy2018.com/downloads/RK3568/RK356X/Hardware/Rockchip_RK3566_Hardware_Design_Guide_V1.1_EN.pdf (for Electric schematic Design Recommendation)
+ 
 
 
 PCB STACKUP:
@@ -25,6 +28,72 @@ L5: Power
 L6: Signal
 L7: Solid GND plane
 L8: Signal / Power / Decoupling
+
+(suggested by the documentation)
+L1: Signal 
+L2: Solid GND plane
+L3: Power
+L4: Signal
+L5: GND
+L6: Signal
+
+
+
+HIGH SIGNAL BEST PRACTISES:
+    - Match impedence
+    - Match differential trace lenght
+    - Consider the antipad of via to match the target impedence
+    - Consider the via lenght wehn matching the signal length
+
+
+LPDDR4 RAM SIGNALS:
+    - DQ lines (data bus, trasmitting up to 32 bits at a time, split into 2 channels A and B)
+    - DQS differential lines (data strobes, validation clocks telling the ram chip when to read the data lines)
+    - DM lines (data mask lines)
+    - CA lines (transmit the specific memory address as well as the commansd)
+    - CLK differential lines
+    - CS lines (chip select, wake up a specific rank of the RAM chip to list for incoming data)
+    - CKE lines (activate the internal clock circuitry)
+    - reset line (wipe interal configuration registers)
+    - ODT (kill echo of the high speed electric signals)
+
+
+ARCHITECTURE: 
+                               ┌─────────────────────────────────────────┐
+                               │  6S LiPo Battery Input (22V - 25.2V)    |
+                               └────────────────────┬────────────────────┘
+                                                    │
+                   ┌────────────────────────────────┴────────────────────────────────┐
+                   ▼                                                                 ▼
+         [ MP9943 Buck Regulator ]                                         [ MP9943 Buck Regulator ]
+           (Output: direct 5V)                                               (Output: direct 3.8V)
+                   │                                                                 │
+         ┌─────────┴─────────┐                                                       ▼
+         ▼                   ▼                                           [ Quectel EG25-G Modem ]
+   [ RK809 PMIC ]      [ Camera FPC ]                                   (RF Bursts up to 2.5A)
+   (Powers RK3566)    (MIPI Power Domain)                                            │
+         │                                                                           ▼
+         ▼                                                                    [ Nano-SIM Slot ]
+   [ RK3566 MPU ]                                                            (w/ TVS Protection)
+   (Core/DDR/IO)
+    
+
+INTERFACES:
+    - UART shell interface
+    - UART telemetry interface
+    - 15-Pin 1.0mm Pitch MIPI-CSI camera interface (https://www.unikeyic.com/products/ffc-fpc-connectors/522071585/29837389.html?sku=1003001014224254)
+    - USB OTG Flashing Interface(4-Pin Edge Test-Pads for Flashing eMMC via rkdeveloptool)
+
+
+ELECTRIC . Sheet_Power_Input.kicad_sch  (6S Battery -> Dual MP9943 Bucks -> 5V & 3.8V Rails)
+    - Sheet_PMIC_RK809.kicad_sch   (RK809-1, Buck/LDO Outputs, Power sequence, PWRON Key)
+    - Sheet_SoC_RK3566.kicad_sch   (Core CPU Pins, SARADC Boot Straps, Clocks & Resets)
+    - Sheet_Memory.kicad_sch       (LPDDR4 RAM, eMMC Flash, Termination Resistors)
+    - Sheet_Cellular_LTE.kicad_sch (Quectel Modem, SIM Slot, TVS Protection, U.FL Socket)
+    - Sheet_Interfaces.kicad_sch   (15-Pin Camera FPC, TXU0202 Level Shifter, Test Pads)SCHEMATICS: 
+    
+
+
 
 
 
