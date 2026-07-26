@@ -11,11 +11,14 @@ MP9943AGQ-Z: Adjustable Buck Voltage Regulator (25V - 3.8V)
 TXU0202DCUR: 2 channel fixed-direction Logic Level Shifter (bridges the dual-voltage serial UART interface between the RK3566 Processor (1.8V logic) and the STM32 Flight Controller (3.3V logic))
 Nano-SIM Card Slot
 MIPI-CSI Camera FPC Connector
+IDEAL DIODE: NCV68061SNAIT1G (https://www.lcsc.com/product-detail/C5206748.html?s_z=n_q_NCV68061&spm=wm.fly.bg.0.xh&lcsc_vid=QVRWXgYHRANZUFYHQgQLAVxXEQdYAVFRQFJeBlJXFVUxVlNeQlBeV1ZeRldeUjsOAxUeFF5JWBYZEEoKFBINSQcJGk4dAgUUFAk%3D)
 
 REFERENCE SCHEMATIC:
-https://dl.radxa.com/zero3/docs/hw/3w/radxa_zero_3w_v1110_schematic.pdf (Example)
-https://dl.xkwy2018.com/downloads/RK3568/RK356X/Hardware/Rockchip_RK3568_Hardware_Design_Guide_V1.2_EN.pdf (for PCB Design recommendations)
-https://dl.xkwy2018.com/downloads/RK3568/RK356X/Hardware/Rockchip_RK3566_Hardware_Design_Guide_V1.1_EN.pdf (for Electric schematic Design Recommendation)
+    - https://dl.radxa.com/zero3/docs/hw/3w/radxa_zero_3w_v1110_schematic.pdf (Example)
+    - https://dl.xkwy2018.com/downloads/RK3568/RK356X/Hardware/Rockchip_RK3568_Hardware_Design_Guide_V1.2_EN.pdf (for PCB Design recommendations)
+    - https://dl.xkwy2018.com/downloads/RK3568/RK356X/Hardware/Rockchip_RK3566_Hardware_Design_Guide_V1.1_EN.pdf (for Electric schematic Design Recommendation)
+    - https://files.pine64.org/doc/quartz64/Quartz64_model-B_Schematic-V1.3_20220124.pdf
+    - https://rockchip.fr/RK809%20datasheet%20V2.7.pdf
  
 
 
