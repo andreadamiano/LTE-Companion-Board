@@ -2,7 +2,7 @@ BILL OF MATERIALS:
 RK3566: SoC (microprocessor)
 Power Management IC: RK809-5
 K4F6E304HB-MGCH: Ram memory
-Quectel EG25-G (LGA Version): Modem
+Quectel EG25-G or SIMCom Wireless Solutions SIM7600E-H (https://www.lcsc.com/product-detail/C5338795.html?s_z=n_q_SIM7600E-H&spm=wm.fly.bg.0.xh&lcsc_vid=QVRWXgYHRANZUFYHQgQLAVxXEQdYAVFRQFJeBlJXFVUxVlNeQlBWVV1UT1leVzsOAxUeFF5JWBYZEEoKFBINSQcJGk4NBhADEA4cHktTQVFADxALGw%3D%3D) : LTE Modem
 emmc: Flash memory
 U.FL RF: Antenna socket
 MP9943AGQ-Z: Adjustable Buck Voltage Regulator (25V - 5V)
